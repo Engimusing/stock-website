@@ -10,7 +10,11 @@ export default function SignUpForm() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(formInput)
+        axios.post('http://localhost:5000/register', formInput).then(res => {
+            console.log(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     return (
