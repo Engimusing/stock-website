@@ -2,8 +2,14 @@ const db = require('../dbConfig');
 
 module.exports = {
     add,
-    findById
+    findById,
+    findByUsername,
 };
+
+async function findByUsername(username) {
+    const [user] = await db("users").where({ username });
+    return user;
+}
 
 async function findById(id) {
     const [user] = await db("users").select("id", "username").where({ id })
